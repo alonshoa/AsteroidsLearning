@@ -4,7 +4,7 @@ var FPS = 60;
 
 var nbSensors = 16;
 var maxSensorSize = 200;
-
+var highScore = 0;
 
 var images = {};
 
@@ -352,6 +352,8 @@ Game.prototype.isItEnd = function(){
 			return false;
 		}
 	}
+	if (this.score > highScore)
+		highScore = this.score;
 	return true;
 }
 
@@ -397,6 +399,7 @@ Game.prototype.display = function(){
 	this.ctx.fillText("Score : "+this.score, 10, 25);
 	this.ctx.fillText("Generation : "+this.generation, 10, 50);
 	this.ctx.fillText("Alive : "+this.alives+" / "+Neuvol.options.population, 10, 75);
+	this.ctx.fillText("High Score: "+highScore,10,100);
 }
 
 window.onload = function(){
